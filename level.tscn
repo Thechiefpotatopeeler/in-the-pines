@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bua354d84qwbq"]
+
+[ext_resource type="Script" path="res://Player.cs" id="1_5s0hi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oxfgc"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k36v0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8tnip"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rrjd0"]
+size = Vector3(10, 1, 10)
+
+[node name="Level" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9225, 0)
+script = ExtResource("1_5s0hi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("BoxShape3D_oxfgc")
+
+[node name="BodyMesh" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CylinderMesh_k36v0")
+
+[node name="PlayerCamera" type="Camera3D" parent="Player"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_8tnip")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_rrjd0")
